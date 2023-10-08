@@ -1,1 +1,1 @@
-<div class="content">Content</div>
+<div class="content">Index Content</div>

@@ -1,6 +1,6 @@
 <?php
 
-class IndexModel
+class LoginModel
 {
 
   public function __construct()

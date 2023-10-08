@@ -10,7 +10,7 @@ class Group extends Controller
 
   public function index()
   {
-    $this->view->render('group/index');
+    $this->view->render('group/index', false);
     require_once 'models/group_model.php';
     $model = new GroupModel();
   }

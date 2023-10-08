@@ -3,10 +3,14 @@
 class View
 {
 
-  public function render($name)
+  public function render($name, $full = true)
   {
-    include_once 'views/header.php';
-    require_once 'views/' . $name . '.php';
-    include_once 'views/footer.php';
+    if ($full) {
+      include_once 'views/header.php';
+      require_once 'views/' . $name . '.php';
+      include_once 'views/footer.php';
+    } else {
+      require_once 'views/' . $name . '.php';
+    }
   }
 }

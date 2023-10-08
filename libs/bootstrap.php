@@ -16,6 +16,7 @@ class Bootstrap
 
       if (method_exists($controller, $actionUrl)) {
         $controller->$actionUrl();
+        $controller->loadModel($controllerUrl);
       } else {
         $this->error();
       }
