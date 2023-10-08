@@ -8,7 +8,7 @@ class Bootstrap
     $actionUrl = (isset($_GET['action'])) ? $_GET['action'] : 'index';
     $controllerName = ucfirst($controllerUrl);
 
-    $file = 'controllers/' . $controllerUrl . '.php';
+    $file = CONTROLLER_PATH . $controllerUrl . '.php';
 
     if (file_exists($file)) {
       require_once $file;
@@ -27,7 +27,7 @@ class Bootstrap
 
   public function error()
   {
-    require_once 'controllers/error.php';
+    require_once CONTROLLER_PATH . '/error.php';
     $error = new ErrorController();
     $error->index();
   }

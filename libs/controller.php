@@ -10,7 +10,7 @@ class Controller
 
   public function loadModel($name)
   {
-    $path = 'models/' . $name . '_model.php';
+    $path = MODEL_PATH . $name . '_model.php';
     $modelName = ucfirst($name) . 'Model';
     if (file_exists($path)) {
       require_once($path);
