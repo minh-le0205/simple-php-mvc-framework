@@ -7,6 +7,7 @@ class ErrorController extends Controller
   public function __construct()
   {
     parent::__construct();
+    $this->view->title = 'Error';
   }
 
   public function index()

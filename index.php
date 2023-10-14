@@ -9,3 +9,4 @@ function autoLoad($className) //Custom autoload name function
 spl_autoload_register('autoLoad'); // call that autoload function
 
 $bootstrap = new Bootstrap();
+$bootstrap->init();

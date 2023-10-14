@@ -2,25 +2,52 @@
 
 class Bootstrap
 {
-  public function __construct()
+
+  private $_url;
+  private $_controller;
+  public function init()
   {
     error_reporting(E_ALL & ~E_NOTICE);
-    $controllerUrl = (isset($_GET['controller'])) ? $_GET['controller'] : 'index';
-    $actionUrl = (isset($_GET['action'])) ? $_GET['action'] : 'index';
-    $controllerName = ucfirst($controllerUrl);
 
-    $file = CONTROLLER_PATH . $controllerUrl . '.php';
+    $this->setUrl();
+    if (!isset($this->_url['controller'])) {
+      $this->loadDefaultController();
+      exit();
+    }
+
+    $this->loadExistingController();
+    $this->callControllerMethod();
+  }
+
+  private function setUrl()
+  {
+    $this->_url = isset($_GET) ? $_GET : null;
+  }
+
+  private function loadDefaultController()
+  {
+    require_once(CONTROLLER_PATH . '/index.php');
+    $this->_controller = new Index();
+    $this->_controller->index();
+  }
+
+  private function loadExistingController()
+  {
+    $file = CONTROLLER_PATH . $this->_url['controller'] . '.php';
 
     if (file_exists($file)) {
       require_once $file;
-      $controller = new $controllerName();
+      $this->_controller = new $this->_url['controller'];
+      $this->_controller->loadModel($this->_url['controller']);
+    } else {
+      $this->error();
+    }
+  }
 
-      if (method_exists($controller, $actionUrl)) {
-        $controller->loadModel($controllerUrl);
-        $controller->$actionUrl();
-      } else {
-        $this->error();
-      }
+  private function callControllerMethod()
+  {
+    if (method_exists($this->_controller, $this->_url['action']) == true) {
+      $this->_controller->{$this->_url['action']}();
     } else {
       $this->error();
     }

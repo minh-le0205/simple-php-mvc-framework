@@ -6,6 +6,7 @@ class User extends Controller
   {
     parent::__construct();
     Session::init();
+    $this->view->title = 'User';
   }
 
   public function login()

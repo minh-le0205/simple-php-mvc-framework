@@ -24,6 +24,8 @@ if (!empty($this->css)) {
     $fileCss .= '<link rel="stylesheet" href="' . VIEW_URL . $css . '">';
   }
 }
+
+$title = isset($this->title) ? $this->title : 'MVC';
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +35,7 @@ if (!empty($this->css)) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MVC</title>
+  <title><?php echo $title; ?></title>
   <link rel="stylesheet" href="<?php echo $cssURL ?>style.css">
   <?php echo $fileCss; ?>
   <script type="text/javascript" src="<?php echo $jsURL ?>jquery.js"></script>

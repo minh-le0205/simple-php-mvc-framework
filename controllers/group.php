@@ -7,6 +7,7 @@ class Group extends Controller
   {
     parent::__construct();
     Auth::checkLoggedIn();
+    $this->view->title = 'Group';
   }
 
   public function index()
