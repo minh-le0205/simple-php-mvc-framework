@@ -11,6 +11,7 @@ class User extends Controller
   public function login()
   {
     if ((Session::get('loggedIn'))) {
+      Session::destroy();
       $this->redirect('group', 'index');
     }
 

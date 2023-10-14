@@ -1,10 +1,21 @@
 <?php
 
-class GroupModel
+class GroupModel extends Model
 {
 
   public function __construct()
   {
-    # code...
+    parent::__construct();
+  }
+
+  public function listItems($options = null)
+  {
+    $query[]   = "SELECT `g`.`id`,`g`.`name`,`g`.`status`,`g`.`ordering`, COUNT(`u`.id) AS total";
+    $query[]   = "FROM `group` AS `g` LEFT JOIN `user` AS `u` ON `g`.`id` = `u`.`group_id`";
+    $query[]   = "GROUP BY `g`.`id`";
+    $query    = implode(" ", $query);
+
+    $result    = $this->listRecord($query);
+    return $result;
   }
 }

@@ -6,14 +6,12 @@ class Group extends Controller
   public function __construct()
   {
     parent::__construct();
-    Session::init();
-    if (!(Session::get('loggedIn'))) {
-      $this->redirect('user', 'login');
-    }
+    Auth::checkLoggedIn();
   }
 
   public function index()
   {
+    $this->view->items = $this->db->listItems();
     $this->view->render('group/index');
   }
 }
