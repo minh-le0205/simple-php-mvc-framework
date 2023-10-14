@@ -4,6 +4,7 @@ class Bootstrap
 {
   public function __construct()
   {
+    error_reporting(E_ALL & ~E_NOTICE);
     $controllerUrl = (isset($_GET['controller'])) ? $_GET['controller'] : 'index';
     $actionUrl = (isset($_GET['action'])) ? $_GET['action'] : 'index';
     $controllerName = ucfirst($controllerUrl);

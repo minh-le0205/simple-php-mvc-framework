@@ -1,6 +1,6 @@
 <?php
 
-class LoginModel extends Model
+class UserModel extends Model
 {
 
   public function __construct()

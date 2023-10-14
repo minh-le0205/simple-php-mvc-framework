@@ -1,14 +1,19 @@
 <?php
 
-class Login extends Controller
+class User extends Controller
 {
   public function __construct()
   {
     parent::__construct();
+    Session::init();
   }
 
-  public function index() // Hiển thị danh sách menu
+  public function login()
   {
+    if ((Session::get('loggedIn'))) {
+      $this->redirect('group', 'index');
+    }
+
     if (isset($_POST['submit'])) {
       $source = ['username' => $_POST['username']];
       $username = $_POST['username'];
@@ -18,14 +23,18 @@ class Login extends Controller
       $validate->addRule('username', 'existRecord', ['database' => $this->db, 'query' => $query]);
       $validate->run();
       if ($validate->isValid()) {
-        Session::init();
         Session::set('loggedIn', true);
-        header('location: index.php?controller=group&action=index');
-        exit();
+        $this->redirect('group', 'index');
       } else {
         $this->view->errors =  $validate->showErrors();
       }
     }
-    $this->view->render('login/index');
+    $this->view->render('user/login');
+  }
+
+  public function logout()
+  {
+    $this->view->render('user/logout');
+    Session::destroy();
   }
 }
