@@ -4,7 +4,7 @@ if (!empty($this->items)) {
     $id = $value['id'];
     $status = ($value['status'] == 1) ? 'Active' : 'Inactive';
     $xhtml .= '
-      <div class="row">
+      <div class="row" id="item-' . $id . '">
       <p class="w-10"><input type="checkbox" name="checkbox[]" value="' . $id . '"></p>
       <p>' . $value['name'] . '</p>
       <p class="w-10">' . $id . '</p>
@@ -12,8 +12,8 @@ if (!empty($this->items)) {
       <p class="w-10">' . $value['ordering'] . '</p>
       <p class="w-10">' . $value['total'] . '</p>
       <p class="w-10 action">
-        <a href="#">Edit</a>
-        <a href="#">Delete</a>
+        <a href="#">Edit</a> |
+        <a href="javascript:deleteItem(' . $id . ')">Delete</a>
       </p>
     </div>
     ';

@@ -6,6 +6,7 @@ class GroupModel extends Model
   public function __construct()
   {
     parent::__construct();
+    $this->setTable('group');
   }
 
   public function listItems($options = null)
@@ -17,5 +18,10 @@ class GroupModel extends Model
 
     $result    = $this->listRecord($query);
     return $result;
+  }
+
+  public function deleteItem($id, $options = null)
+  {
+    $this->delete([$id]);
   }
 }

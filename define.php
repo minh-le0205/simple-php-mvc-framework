@@ -12,6 +12,7 @@ define('PUBLIC_PATH', ROOT_PATH . DS . 'public' . DS); // định nghĩa đườ
 // Đường dẫn tương đối : thường dùng cho khai script, css, ...
 define('ROOT_URL', '');
 define('PUBLIC_URL', ROOT_URL . 'public' . DS);
+define('VIEW_URL', ROOT_URL . 'views' . DS);
 
 
 // ======== DATABASE =========
