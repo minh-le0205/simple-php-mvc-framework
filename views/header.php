@@ -1,6 +1,17 @@
 <?php
 $cssURL  = PUBLIC_URL . 'css' . DS;
 $jsURL  = PUBLIC_URL . 'js' . DS;
+
+Session::init();
+
+$menu = '<a class="index" href="index.php?controller=index&action=index">Home</a>';
+
+if (Session::get('loggedIn')) {
+  $menu .= '<a class="group" href="index.php?controller=group&action=index">Group</a>';
+  $menu .= '<a class="group" href="index.php?controller=group&action=index">Logout</a>';
+} else {
+  $menu .= '<a class="login" href="index.php?controller=login&action=index">Login</a>';
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +31,5 @@ $jsURL  = PUBLIC_URL . 'js' . DS;
   <div class="wrapper">
     <div class="header">
       <h3>Header</h3>
-      <a class="index" href="index.php?controller=index&action=index">Home</a>
-      <a class="login" href="index.php?controller=login&action=index">Login</a>
-      <a class="group" href="index.php?controller=group&action=index">Group</a>
+      <?= $menu ?>
     </div>
