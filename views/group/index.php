@@ -23,6 +23,9 @@ if (!empty($this->items)) {
 
 <div class="content">
   <h3>Group :: List</h3>
+  <div id="dialog-confirm" title="Thông báo" style="display:none;">
+    <p>Bạn có muốn xóa phần tử này ?</p>
+  </div>
   <div class="list">
     <div class="row head">
       <p class="w-10"><input type="checkbox" name="check-all" id="check-all"></p>

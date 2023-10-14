@@ -15,7 +15,13 @@ if (Session::get('loggedIn')) {
 
 if (!empty($this->js)) {
   foreach ($this->js as $js) {
-    $fileJs = '<script type="text/javascript" src="' . VIEW_URL . $js . '"></script>';
+    $fileJs .= '<script type="text/javascript" src="' . VIEW_URL . $js . '"></script>';
+  }
+}
+
+if (!empty($this->css)) {
+  foreach ($this->css as $css) {
+    $fileCss .= '<link rel="stylesheet" href="' . VIEW_URL . $css . '">';
   }
 }
 ?>
@@ -29,6 +35,7 @@ if (!empty($this->js)) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MVC</title>
   <link rel="stylesheet" href="<?php echo $cssURL ?>style.css">
+  <?php echo $fileCss; ?>
   <script type="text/javascript" src="<?php echo $jsURL ?>jquery.js"></script>
   <script type="text/javascript" src="<?php echo $jsURL ?>custom.js"></script>
   <?php echo $fileJs; ?>

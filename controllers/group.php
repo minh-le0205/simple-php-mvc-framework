@@ -13,7 +13,11 @@ class Group extends Controller
   {
     $this->view->items = $this->db->listItems();
     $this->view->js = [
-      'group/js/group.js'
+      'group/js/group.js',
+      'group/js/jquery-ui-1.10.3.custom.min.js'
+    ];
+    $this->view->css = [
+      'group/css/jquery-ui-1.10.3.custom.min.css'
     ];
     $this->view->render('group/index');
   }

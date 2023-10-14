@@ -1,13 +1,25 @@
 function deleteItem(id) {
-  {
-    $.post(
-      "index.php?controller=group&action=delete",
-      {
-        id: id,
+  $("#dialog-confirm").dialog({
+    resizable: false,
+    height: "auto",
+    width: 400,
+    modal: true,
+    buttons: {
+      Yes: function () {
+        $.post(
+          "index.php?controller=group&action=delete",
+          {
+            id: id,
+          },
+          function (data) {
+            $(`div#item-${id}`).hide(500);
+          }
+        );
+        $(this).dialog("close");
       },
-      function (data) {
-        $(`div#item-${id}`).hide(500);
-      }
-    );
-  }
+      Cancel: function () {
+        $(this).dialog("close");
+      },
+    },
+  });
 }
