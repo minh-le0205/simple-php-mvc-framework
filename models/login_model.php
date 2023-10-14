@@ -1,10 +1,10 @@
 <?php
 
-class LoginModel
+class LoginModel extends Model
 {
 
   public function __construct()
   {
-    # code...
+    parent::__construct();
   }
 }

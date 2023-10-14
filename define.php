@@ -19,3 +19,4 @@ define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', 'Minh@123');
 define('DB_NAME', 'manage_user');
+define('DB_TABLE', 'user');
